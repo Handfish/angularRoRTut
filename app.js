@@ -24,8 +24,14 @@ $scope.addPost = function(){
    //Catch empty or no title.
    if(!$scope.title || $scope.title === '') { return; }
 
-   $scope.posts.push({title: 'A new post!', upvotes: 0});
+   $scope.posts.push({
+      title: $scope.title, 
+      link: $scope.link,
+      upvotes: 0
+   });
+
    $scope.title = '';
+   $scope.link = '';
 };
 
 
