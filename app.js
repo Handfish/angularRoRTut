@@ -1,15 +1,19 @@
 angular.module('zoeticLinks', ['ui.router'])
-.config([
-   '$stateProvider',
-   '$urlRouterProvider',
-   
-   function('$stateProvider', '$urlRouterProvider') {
+.config(['$stateProvider', '$urlRouterProvider', function('$stateProvider', '$urlRouterProvider') {
       $stateProvider
+
          .state('home', {
             url: '/home',
             templateUrl: '/home.html',
             controller: 'MainCtrl
+         })
+
+         .state('posts', {
+            url: '/posts/{id}',
+            templateUrl: '/posts.html',
+            controller: 'PostsCtrl
          });
+
       $urlRouterProvider.otherwise('home');
    }
 ])
@@ -25,17 +29,41 @@ angular.module('zoeticLinks', ['ui.router'])
 }])
 
 //Main controller.
-.controller('MainCtrl', [
-      '$scope',
-      'posts',
+.controller('MainCtrl', '$scope','posts', function($scope, posts){
+      $scope.posts = posts.posts;
+
+      //Function to add posts.
+      $scope.addPost = function(){
+         //Catch empty or no title.
+         if(!$scope.title || $scope.title === '') { return; }
+
+         $scope.posts.push({
+            title: $scope.title, 
+            link: $scope.link,
+            upvotes: 0
+         });
+
+         $scope.title = '';
+         $scope.link = '';
+      };
 
 
-      function($scope, posts){
-         $scope.test = 'Hello world!';
-         $scope.posts = posts.posts;
-      }
+      $scope.incrementUpvotes = function(post){
+         //Catch empty or no title.
+         post.upvotes += 1; 
+      };
       
-      ]);
+}]);
+
+//Posts controller.
+.controller('PostsCtrl', ['$scope', '$stateParans', 'posts', function($scope, $stateParams, posts){
+      $scope.test = 'Hello world!';
+      $scope.posts = posts.posts;
+      
+      
+
+}]);
+
 
 //Declaring posts in a method.
 $scope.posts = [
@@ -46,23 +74,4 @@ $scope.posts = [
    {title: 'post 5', upvotes: 0},
 ];
 
-//Function to add posts.
-$scope.addPost = function(){
-   //Catch empty or no title.
-   if(!$scope.title || $scope.title === '') { return; }
 
-   $scope.posts.push({
-      title: $scope.title, 
-      link: $scope.link,
-      upvotes: 0
-   });
-
-   $scope.title = '';
-   $scope.link = '';
-};
-
-
-$scope.incrementUpvotes = function(post){
-   //Catch empty or no title.
-   post.upvotes += 1; 
-};
