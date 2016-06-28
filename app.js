@@ -1,11 +1,23 @@
-angular.module('flapperNews', [])
+angular.module('zoeticLinks', ['ui.router'])
+
+//Posts factory
+.factory('posts', [function(){
+   var output = {
+      posts: []
+   };
+
+   return output;
+}])
 
 //Main controller.
 .controller('MainCtrl', [
       '$scope',
+      'posts',
 
-      function($scope){
+
+      function($scope, posts){
          $scope.test = 'Hello world!';
+         $scope.posts = posts.posts;
       }
       
       ]);
