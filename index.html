@@ -1,12 +1,22 @@
 <html>
+
    <head>
       <title>Learning Angular App!</title>
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
       <script src="app.js"></script>
    </head>
+
    <body ng-app="zoeticLinks" ng-controller="MainCtrl">
+      <!-- Displaying all posts here -->
       <div ng-repeat="post in posts | orderBy: '-upvotes'">
          {{post.title}} - upvotes: {{post.upvotes}}
       </div>
+      
+      <!-- Form to add create new post. -->
+      <form ng-submit="addPost()">
+         <input type="text" ng-model="title"></input>
+         <button type="submit">Post</button>
+      </form>
    </body>
+
 </html>

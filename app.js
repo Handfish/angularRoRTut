@@ -21,5 +21,9 @@ $scope.posts = [
 
 //Function to add posts.
 $scope.addPost = function(){
+   //Catch empty or no title.
+   if(!$scope.title || $scope.title === '') { return;}
+
    $scope.posts.push({title: 'A new post!', upvotes: 0});
+   $scope.title = '';
 };
