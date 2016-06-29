@@ -41,6 +41,10 @@ angular.module('zoeticLinks', ['ui.router'])
             title: $scope.title, 
             link: $scope.link,
             upvotes: 0
+            comments: [
+               {author: 'Joe', body: 'Noiceeee post dude!', upvotes: 0},
+               {author: 'Bob', body: 'Great idea but its actually a terrible idea.', upvotes: 0}
+            ]
          });
 
          $scope.title = '';
@@ -57,10 +61,27 @@ angular.module('zoeticLinks', ['ui.router'])
 
 //Posts controller.
 .controller('PostsCtrl', ['$scope', '$stateParans', 'posts', function($scope, $stateParams, posts){
-      $scope.test = 'Hello world!';
-      $scope.posts = posts.posts;
+      $scope.posts = posts.posts[$stateParams.id];
       
-      
+      //Function to add comments.
+      $scope.addComment = function(){
+         //Catch empty or no comment.
+         if(!$scope.body || $scope.body === '') { return; }
+
+         $scope.posts.comments.push({
+            body: $scope.body, 
+            author: 'user',
+            upvotes: 0
+         });
+
+         $scope.body = '';
+      };
+
+
+      $scope.incrementUpvotes = function(comment){
+         //Catch empty or no comment.
+         comment.upvotes += 1; 
+      };
 
 }]);
 
