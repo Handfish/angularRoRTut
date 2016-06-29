@@ -1,4 +1,4 @@
-//Posts controller.
+angular.module('zoeticLinks')
 .controller('PostsCtrl', ['$scope', '$stateParans', 'posts', function($scope, $stateParams, posts){
       $scope.posts = posts.posts[$stateParams.id];
       

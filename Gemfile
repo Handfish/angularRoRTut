@@ -44,3 +44,5 @@ gem 'angular-rails-templates'
 # In order to integrate JSON more easily.
 gem 'responders'
 
+# In attempts to get these routes working.
+gem 'angular-rails-templates'
