@@ -40,3 +40,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Structuring the javascripts folder by moving angular templates into asset pipeline.
 gem 'angular-rails-templates'
+
+# In order to integrate JSON more easily.
+gem 'responders'
+

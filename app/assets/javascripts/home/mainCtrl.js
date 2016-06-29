@@ -1,6 +1,21 @@
 //Main controller.
 .controller('MainCtrl', '$scope','posts', function($scope, posts){
-      $scope.posts = posts.posts;
+
+      $scope.posts = [
+         {title: 'post 1', upvotes: 1},
+         {title: 'post 2', upvotes: 9},
+         {title: 'post 3', upvotes: 5},
+         {title: 'post 4', upvotes: 6},
+         {title: 'post 5', upvotes: 0},
+      ];
+      
+      //$scope.posts = posts.posts;
+
+      resolve: {
+        postPromise: ['posts', function(posts) {
+          return posts.getAll();
+        }]
+      };
 
       //Function to add posts.
       $scope.addPost = function(){

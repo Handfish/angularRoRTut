@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  include Responders
 
   def index
     respond_with Post.all
