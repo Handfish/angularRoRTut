@@ -1,0 +1,22 @@
+{
+  "name": "zoetic-links",
+  "homepage": "https://github.com/Handfish/angularRoRTut",
+  "authors": [
+    "Kenny Udovic <kennyudovic@gmail.com>"
+  ],
+  "description": "A dynamic link sharing website.",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-ui": "^0.4.0",
+    "bootstrap": "^3.3.6"
+  }
+}
