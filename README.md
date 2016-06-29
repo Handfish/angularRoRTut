@@ -1,4 +1,4 @@
-# Angular-Rails 5 Integration
+# Zoetic Links
 
 Following tutorial at thinkster.io and integrating with Rails 5.
 
