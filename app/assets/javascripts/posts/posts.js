@@ -1,21 +1,34 @@
-//Posts factory
+// Posts factory
 angular.module("zoeticLinks")
-.factory('posts', ['$http', function($http){
-  var output = {
-    posts: []
+.factory('posts', [
+ '$http', 
+
+ function($http){
+
+  var o = {
+    posts: [{title:"Yo.", upvotes:100}]
   };
 
-  output.getAll = function() {
-    return $http.get('/posts.json').success(function(data){
-      angular.copy(data, output.posts);
-    });
-  };
 
-  output.create = function(post) {
+  o.getAll = function() {
+    return $http.get('/posts.json')
+      .then(function successCallback(data){
+          console.log(2);
+          angular.copy(data, o.posts);
+       },
+       function errorCallback(data){
+          var o = {
+            posts: [{title:"No.", upvotes:-100}]
+          };
+       })
+    };
+  
+
+  o.create = function(post) {
     return $http.post('/posts.json', post).success(function(data){
       o.posts.push(data);
     });
   };
 
-  return output;
+  return o;
 }])

@@ -1,5 +1,8 @@
 angular.module('zoeticLinks')
-.controller('MainCtrl', '$scope','posts', function($scope, posts){
+.controller('MainCtrl', [
+    '$scope',
+    'posts',
+    function($scope, posts){
 
       resolve: {
         postPromise: ['posts', function(posts) {
