@@ -4,14 +4,7 @@ angular.module('zoeticLinks')
     'posts',
     function($scope, posts){
 
-      resolve: {
-        postPromise: ['posts', function(posts) {
-          return posts.getAll();
-        }]
-      };
-
       $scope.posts = posts.posts;
-
       //Function to add posts.
       $scope.addPost = function(){
          //Catch empty or no title.

@@ -12,17 +12,22 @@ angular.module("zoeticLinks")
 
   o.getAll = function() {
     return $http.get('/posts.json')
-      .then(function successCallback(data){
-          console.log(2);
-          angular.copy(data, o.posts);
+      .then(function (response){
+          angular.copy(response.data, o.posts);
        },
-       function errorCallback(data){
-          var o = {
+       function (data){
+          o = {
             posts: [{title:"No.", upvotes:-100}]
           };
        })
     };
-  
+
+/*
+      .success(function(data){
+        angular.copy(data, o.posts);
+      });
+  };
+*/
 
   o.create = function(post) {
     return $http.post('/posts.json', post).success(function(data){
