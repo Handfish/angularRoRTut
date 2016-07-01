@@ -44,4 +44,5 @@ gem 'angular-rails-templates'
 # In order to integrate JSON more easily.
 gem 'responders'
 
+gem 'angular_rails_csrf'
 
