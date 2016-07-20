@@ -19,7 +19,12 @@ function($stateProvider, $urlRouterProvider) {
          .state('posts', {
             url: '/posts/{id}',
             templateUrl: 'posts/_posts.html',
-            controller: 'PostsCtrl'
+            controller: 'PostsCtrl',
+            resolve: {
+              post: ['$stateParams', 'posts', function($stateParams, posts) {
+                return posts.get($stateParams.id);
+              }]
+            }
          });
 
       $urlRouterProvider.otherwise('home');
@@ -38,4 +43,9 @@ $scope.posts = [
    {title: 'post 4', upvotes: 6},
    {title: 'post 5', upvotes: 0},
 ];
+            resolve: {
+              post: ['$stateParams', 'posts', function($stateParams, posts) {
+                return posts.get($stateParams.id);
+              }]
+            }
 */

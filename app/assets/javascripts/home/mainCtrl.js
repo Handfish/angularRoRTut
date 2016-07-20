@@ -21,8 +21,7 @@ angular.module('zoeticLinks')
 
 
       $scope.incrementUpvotes = function(post){
-         //Catch empty or no title.
-         post.upvotes += 1; 
+         posts.upvote(post); 
       };
       
 }]);
